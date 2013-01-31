@@ -1,5 +1,5 @@
 // Clicking project thumbnails slides carousel to that item
-$('.project-thumbnails img').click(function() {
+$('body').on('click', '.project-thumbnails img', function() {
 	$('.carousel').carousel($(this).parent().index());
 });
 
