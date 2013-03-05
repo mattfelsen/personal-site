@@ -10,15 +10,25 @@ array_shift($uri);
 
 $page = array_shift($uri);
 
-include('./views/header.html');
+// Set flag for whether this was an ajax request
+// Only return content for #wrap if it was, include header & footer otherwise
+$ajax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+
+
+if (!$ajax)
+	include('./views/header.html');
 
 if ($page != 'projects') {
 	include('./views/main.html');
 } else {
 	$project = array_shift($uri);
-	include("./views/$project.html");
+	if ($project)
+		include("./views/projects/$project.html");
+	else
+		include('./views/main.html');
 }
 
-include('./views/footer.html');
+if (!$ajax)
+	include('./views/footer.html');
 
 ?>
