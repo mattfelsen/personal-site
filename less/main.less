@@ -1,8 +1,12 @@
-
-.brand {
-	text-transform: uppercase;
+body {
+	//background-image: url('../img/bg.png');
 }
-.nav li:first-letter {
+
+hr, section {
+	padding-bottom: 10px;
+}
+
+.brand, .nav li:first-letter {
 	text-transform: uppercase;
 }
 
@@ -11,6 +15,14 @@
 
 	img {
 		border: 1px solid #ccc;
+	    -moz-transition: opacity .15s linear;
+	    -webkit-transition: opacity .15s linear;
+	    -ms-transition: opacity .15s linear;
+	    -o-transition: opacity .15s linear;
+	    transition: opacity .15s linear;
+	}
+	img:hover {
+		opacity: 0.5;
 	}
 
 	h2:first-letter {
@@ -20,6 +32,30 @@
 
 .project-description {
 	margin-bottom: 20px;
+}
+.project-thumbnails {
+	padding-bottom: 10px;
+
+	.span2 {
+		padding-bottom: 15px;
+	}
+}
+
+// This is so the controls float above the zoom image
+.carousel-control {
+	z-index: 1;
+}
+
+// And the magnifying glass icon for the carousel
+.carousel-inner:after {
+	content: '';
+	display: block; 
+	width: 33px; 
+	height: 33px; 
+	position: absolute; 
+	top: 0;
+	right: 0;
+	background: url('../img/magnify.png');
 }
 
 @font-face {
