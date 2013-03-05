@@ -1,5 +1,8 @@
 <?php
 
+if ($_SERVER['HTTP_HOST'] == "www.mattfelsen.com")
+	header('Location: http://mattfelsen.com' . $_SERVER['REQUEST_URI']);
+
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 
 // Get rid of first, blank element
