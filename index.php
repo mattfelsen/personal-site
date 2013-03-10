@@ -3,6 +3,12 @@
 if ($_SERVER['HTTP_HOST'] == "www.mattfelsen.com")
 	header('Location: http://mattfelsen.com' . $_SERVER['REQUEST_URI']);
 
+// Added to deal with weird requests coming in for the /projects/img/projects/...
+if ($_SERVER['REQUEST_URI'] == '/projects/img/projects/spiros/spiro10.jpg') {
+	header("Location: http://mattfelsen.com/img/projects/spiros/spiro10.jpg");
+	die();
+}
+
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 
 // Get rid of first, blank element
