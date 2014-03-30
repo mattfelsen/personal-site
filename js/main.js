@@ -39,7 +39,7 @@ $(function() {
 
 	// Clicking project thumbnails slides carousel to that item
 	$('body').on('click', '.project-thumbnails img', function() {
-		$('.carousel').carousel($(this).parent().index());
+		$('.carousel').carousel($(this).parent().index(), { interval: false });
 	});
 
 	// Set up click handler for scrolling to links within page
