@@ -10,7 +10,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+        <?php if ($_SERVER['SERVER_NAME'] == 'localhost') { ?>
         <base href="http://localhost:8888/beta/">
+        <?php } else { ?>
+        <base href="http://mattfelsen.com/">
+        <?php } ?>
 
         <link rel="stylesheet" href="css/bootstrap.css">
         <!-- <link rel="stylesheet/less" type="text/css" href="less/bootstrap.less" /> -->
@@ -52,7 +56,11 @@
                         <span class="icon-bar"></span>
                     </a>
 
+                    <?php if ($_SERVER['SERVER_NAME'] == 'localhost') { ?>
                     <a class="brand" href="/beta">matt felsen</a>
+                    <?php } else { ?>
+                    <a class="brand" href="/">matt felsen</a>
+                    <?php } ?>
                     
                     <div class="nav-collapse collapse">
                         <ul class="nav">

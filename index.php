@@ -14,8 +14,11 @@ $uri = explode('/', $_SERVER['REQUEST_URI']);
 // Get rid of first, blank element
 array_shift($uri);
 
-// Get rid of "beta" element since the site is in development!
-array_shift($uri);
+// Check if this is running on localhost and exists at localhost/beta
+// If so get rid of that element too
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+	array_shift($uri);
+}
 
 $page = array_shift($uri);
 
@@ -31,10 +34,14 @@ if ($page != 'projects') {
 	include('./views/main.html');
 } else {
 	$project = array_shift($uri);
-	if ($project)
+	if ($project) {
+		//if ($project == 'img') {
+			//mail("mattfelsen@gmail.com", "Include error", "\$_SERVER looks like...\n\n" . json_encode($_SERVER));
+		//}
 		include("./views/projects/$project.html");
-	else
+	} else {
 		include('./views/main.html');
+	}
 }
 
 if (!$ajax)
