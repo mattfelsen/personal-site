@@ -20,7 +20,21 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	array_shift($uri);
 }
 
+// Parse out the page from the URL
 $page = array_shift($uri);
+
+// Also parse out the project if appropriate, and verify it exists
+if ($page == 'projects') {
+	$project = array_shift($uri);
+
+	if ($project && !file_exists("./views/projects/$project.html")) {
+		if ($_SERVER['SERVER_NAME'] == 'localhost') {
+			header("Location: /beta/projects");
+		} else {
+			header("Location: /projects");
+		}
+	}
+}
 
 // Set flag for whether this was an ajax request
 // Only return content for #wrap if it was, include header & footer otherwise
@@ -33,7 +47,6 @@ if (!$ajax)
 if ($page != 'projects') {
 	include('./views/main.html');
 } else {
-	$project = array_shift($uri);
 	if ($project) {
 		//if ($project == 'img') {
 			//mail("mattfelsen@gmail.com", "Include error", "\$_SERVER looks like...\n\n" . json_encode($_SERVER));
